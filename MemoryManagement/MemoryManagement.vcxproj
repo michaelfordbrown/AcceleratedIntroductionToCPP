@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{61919EB5-9E8D-42E0-A3E7-69CB04AB4D6C}</ProjectGuid>
+    <ProjectGuid>{C37A580C-D0E0-4F5F-A6F2-0CFB85797FE9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ObjectOrientedProgramming</RootNamespace>
+    <RootNamespace>MemoryManagement</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,17 +145,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Address.h" />
-    <ClInclude Include="EmpFactory.h" />
-    <ClInclude Include="Employee.h" />
-    <ClInclude Include="Person.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Employee.cpp" />
-    <ClCompile Include="ObjectOrientedProgramming.cpp" />
-    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="MemoryManagement.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
