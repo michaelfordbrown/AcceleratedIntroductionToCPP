@@ -8,6 +8,9 @@ class Address
 public:
 	string city;
 
+	// Default constructor
+	Address() {}
+
 	// Create Address instance on the STACK
 	Address(string const& city) : city(city)
 	{
@@ -91,16 +94,96 @@ public:
 	}
 };
 
+class Person3
+{
+public:
+	shared_ptr<Address> address;
+
+	Person3(string const& city)
+	{
+		address = make_shared<Address>(city);
+		cout << "Created person" << endl;
+	}
+
+	~Person3()
+	{
+		cout << "Destroyed person" << endl;
+	}
+};
+void inc(int& x) { x++; }
+
+int meaningOfLife() { return 42; }
+
+void move_rvalue()
+{
+	//int a = 0;
+	//inc(a);
+
+	//inc(1); not possible
+
+	// RValue reference of meaningOf
+	// meaningOfLife() = 5;
+	// int& x = meaningOfLife();
+
+	// RValue reference of meaningOfLife
+	// int&& y = meaningOfLife();
+	//cout << y << endl;
+
+	
+	Address book[100];
+
+	// Address occupying 2 locations in memory
+	//book[55] = Address("Paris");
+
+	// move accepts either an lvalue or rvalue argument, and return it as an rvalue without triggering a copy construction 
+	book[55] = move(Address("Paris"));
+
+}
+
+// std::unique_ptr is a smart pointer that owns and manages another object through a pointer and disposes of that object when the unique_ptr goes out of scope. 
+unique_ptr<Address> create_address(string const& city)
+{
+	//return unique_ptr<Address>(new Address(city));
+	// OR
+	// make_unique - Constructs an object of type T and wraps it in a std::unique_ptr
+	return make_unique<Address>(city);
+}
+
 int main()
 {
-	Address* a;
+	//move_rvalue();
+
+	/*Address* a;
 
 	{
 		Person p("New York");
 		// Sharing "p" address with "a" problematic as "p" address can be destroyed while "a" still using
 		a = p.address;
 	}
+	*/
 
+	/*
+	// Unique Pointers (non sharing)
+	auto a = create_address("Paris");
+	a->city = "New " + a->city;
+
+	cout << "Renamed city: " << a->city << endl;
+
+	// auto v(a); // Copy constructor of unique_ptr has been marked "delete".
+	*/
+
+	// std::shared_ptr is a smart pointer that retains shared ownership of an object through a pointer. Several shared_ptr objects may own the same object. 
+
+	shared_ptr<Address> a;
+	{
+		Person3 p("Paris");
+		a = p.address;
+	}
+
+	// Shared pointer has not died although the Person3 has been destroyed
+	cout << a->city << endl;
+
+	//
 	getchar();
     return 0;
 }
