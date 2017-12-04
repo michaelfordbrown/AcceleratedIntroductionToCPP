@@ -18,6 +18,8 @@ int main()
 {
 	cout << "Object  Oriented Programming\n";
 
+	// CLASS FIELDS AND FUNCTIONS
+
 	// Instance allocated on the stack
 	Person p(30, "Jane Doe", Person::female);
 
@@ -26,7 +28,8 @@ int main()
 
 	p2->greet();
 	
-	// Constants and Static members
+	// CONSTANT AND STATIC MEMBERS
+
 	p.sex = Person::male;
 	int le = Person::getLifeExpectancy();
 	cout << le << endl;
